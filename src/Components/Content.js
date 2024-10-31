@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import ChangeItem from "./ChangeItem";
 import AnnotationBar from "./AnnotationBar";
-import { str_word_diff } from "../utils";
+import { str_word_diff, COLNAMES } from "../utils";
 
 const Content = ({ list, setList, handleCheck, handleDelete, rowIdx, setRowIdx }) => {
     // useEffect(() => {
@@ -15,6 +15,7 @@ const Content = ({ list, setList, handleCheck, handleDelete, rowIdx, setRowIdx }
 
     return (
       <main className="content">
+        <p>{Math.floor(rowIdx / COLNAMES.length) + 1} </p>
         {list.length ? (
           <>
             <p>{list[rowIdx]['original']}</p>
