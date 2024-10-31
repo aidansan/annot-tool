@@ -53,7 +53,10 @@ const Content = ({ list, handleCheck, handleDelete, rowIdx, setRowIdx, colIdx, s
           </h3>
         )} */}
         <ChangeItem
+          rowIdx={rowIdx}
           setRowIdx={setRowIdx}
+          colIdx={colIdx}
+          setColIdx={setColIdx}
           list={list}/>
       </main>
     );

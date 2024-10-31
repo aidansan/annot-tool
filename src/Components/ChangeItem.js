@@ -1,29 +1,36 @@
 import { useRef } from "react";
 import { COLNAMES } from "../constants";
 
-const ChangeItem = ({ setRowIdx, list}) => {
+const ChangeItem = ({ rowIdx, setRowIdx, colIdx, setColIdx, list}) => {
   const inputRef = useRef();
   return (
     <>
         <button
             onClick={() => {
-                setRowIdx(idx => {
-                if (idx > 0) {
-                    return idx - 1
+                if (colIdx === 0) {
+                    if (rowIdx !== 0) {
+                        setColIdx(COLNAMES.length - 1);
+                        setRowIdx(idx => idx - 1);
+                    }
                 }
-                return 0
-                })
+                else {
+                    setColIdx(idx => idx - 1);
                 }
-            }>
+            }}>
             PREVIOUS
         </button>
         <button
-            onClick={() => setRowIdx(idx => {
-                if (idx < list.length - 1) {
-                    return idx + 1
+            onClick={() => {
+                if (colIdx === COLNAMES.length - 1) {
+                    if (rowIdx !== list.length - 1) {
+                        setColIdx(0);
+                        setRowIdx(idx => idx + 1);
+                    }
                 }
-                return list.length - 1
-            })}>            
+                else {
+                    setColIdx(idx => idx + 1);
+                }
+            }}>           
             NEXT
         </button>
 
