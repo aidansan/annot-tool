@@ -5,10 +5,16 @@ FILENAME = "data.tsv"
 FIELDNAMES = ['first_name', 'last_name']
 
 DUMMY_DATA = [
-    {"original": "I really love pizza", "gen_1": "I super love pizza", "gen_2": "He really love pizza", "gen_3": "I super like pizza"},
-    {"original": "The man chased after the dog in the park", "gen_1": "The man chased after the puppy in the park", "gen_2": "The boy ran after the dog in the park", "gen_3": "The boy ran after the dog in the forest"},
-    {"original": "The cat sat on the mat", "gen_1": "The cat sat on the carpet", "gen_2": "The kitten sat on the rug", "gen_3": "Small cat napped on the rug"}
-    ]
+    {"original": "I really love pizza", "paraphrase": "I super love pizza", "name": "gen_1", "is_paraphrase": True, "notes": []},
+    {"original": "I really love pizza", "paraphrase": "He really love pizza", "name": "gen_2", "is_paraphrase": True, "notes": []},
+    {"original": "I really love pizza", "paraphrase": "I super like pizza", "name": "gen_3", "is_paraphrase": True, "notes": []},
+    {"original": "The man chased after the dog in the park", "paraphrase": "The man chased after the puppy in the park", "name": "gen_1", "is_paraphrase": True, "notes": []},
+    {"original": "The man chased after the dog in the park", "paraphrase": "The boy ran after the dog in the park", "name": "gen_2", "is_paraphrase": True, "notes": []},
+    {"original": "The man chased after the dog in the park", "paraphrase": "The boy ran after the dog in the forest", "name": "gen_3", "is_paraphrase": True, "notes": []},
+    {"original": "The cat sat on the mat", "paraphrase": "The cat sat on the carpet", "name": "gen_1", "is_paraphrase": True, "notes": []},
+    {"original": "The cat sat on the mat", "paraphrase": "The kitten sat on the rug", "name": "gen_2", "is_paraphrase": True, "notes": []},
+    {"original": "The cat sat on the mat", "paraphrase": "Small cat napped on the rug", "name": "gen_3", "is_paraphrase": True, "notes": []},
+]
 
 def get_iso_time():
     now = datetime.now()

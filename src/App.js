@@ -46,7 +46,6 @@ function App() {
   const [error, setError] = useState(null);
   
   const [rowIdx, setRowIdx] = useState(0);
-  const [colIdx, setColIdx] = useState(0);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -185,12 +184,11 @@ function App() {
 
       <Content
         list={list}
+        setList={setList}
         handleCheck={handleCheck}
         handleDelete={handleDelete}
         rowIdx={rowIdx}
         setRowIdx={setRowIdx}
-        colIdx={colIdx}
-        setColIdx={setColIdx}
         />
     </div>
   );

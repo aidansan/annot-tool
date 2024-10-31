@@ -1,13 +1,16 @@
 import { useEffect } from "react";
 import ChangeItem from "./ChangeItem";
+import AnnotationBar from "./AnnotationBar";
 import { COLNAMES } from "../constants";
 
 
-const Content = ({ list, handleCheck, handleDelete, rowIdx, setRowIdx, colIdx, setColIdx }) => {
+const Content = ({ list, setList, handleCheck, handleDelete, rowIdx, setRowIdx }) => {
     // useEffect(() => {
     //   console.log("This is content: ", rowIdx);
     // }, []);
     console.log(rowIdx)
+    console.log(list);
+
     // console.log(list)
     // console.log(list[rowIdx])
 
@@ -16,7 +19,7 @@ const Content = ({ list, handleCheck, handleDelete, rowIdx, setRowIdx, colIdx, s
         {list.length ? (
           <>
             <p>{list[rowIdx]['original']}</p>
-            <p>{list[rowIdx][COLNAMES[colIdx]]}</p>
+            <p>{list[rowIdx]['paraphrase']}</p>
           </>
         ) : (<p>No Annotations</p>)
         }
@@ -52,11 +55,14 @@ const Content = ({ list, handleCheck, handleDelete, rowIdx, setRowIdx, colIdx, s
             Empty List{" "}
           </h3>
         )} */}
+        <AnnotationBar
+          rowIdx={rowIdx}
+          setRowIdx={setRowIdx}
+          setList={setList}
+          list={list}/>
         <ChangeItem
           rowIdx={rowIdx}
           setRowIdx={setRowIdx}
-          colIdx={colIdx}
-          setColIdx={setColIdx}
           list={list}/>
       </main>
     );
