@@ -32,7 +32,7 @@ import Content from "./Components/Content";
 import AddList from "./Components/AddList";
 // import request from "./Components/Request";
 import { useState, useEffect } from "react";
-import { COLNAMES } from "./constants";
+import { COLNAMES } from "./utils";
 
 function App() {
   const API_url = "http://127.0.0.1:5000/";
@@ -66,48 +66,17 @@ function App() {
 
     fetchData();
   }, []);
-
-  // Add new Item to the list
-
-  const addItems = async (item) => {
+  useEffect(() => {
     fetch(POST_url, {
       method: 'POST',
       headers: {
         'Accept': 'application/json',
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({
-        firstParam: 'yourValue',
-        secondParam: 'yourOtherValue',
-      })
-    })
-    const id = list.length ? list[list.length - 1].id + 1 : 1;
+      body: JSON.stringify(list),
+  })}, [list])
 
-    const theNewItem = {
-      id,
-
-      checked: false,
-
-      item,
-    };
-
-    const listItem = [...list, theNewItem];
-
-    setList(listItem);
-
-    const postOptions = {
-      method: "POST",
-
-      headers: {
-        "content-Type": "application/json",
-      },
-
-      body: JSON.stringify(theNewItem),
-    };
-
-    // const result = await request(API_url, postOptions);
-    // if (result) setError(result);
-  };
+  // Add new Item to the list
 
   //  Create a function to update the checked property
 
@@ -167,8 +136,6 @@ function App() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
-    addItems(newItem);
 
     setNewItem("");
   };

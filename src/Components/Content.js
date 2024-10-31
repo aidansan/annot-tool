@@ -1,8 +1,7 @@
 import { useEffect } from "react";
 import ChangeItem from "./ChangeItem";
 import AnnotationBar from "./AnnotationBar";
-import { COLNAMES } from "../constants";
-
+import { str_word_diff } from "../utils";
 
 const Content = ({ list, setList, handleCheck, handleDelete, rowIdx, setRowIdx }) => {
     // useEffect(() => {
@@ -19,7 +18,7 @@ const Content = ({ list, setList, handleCheck, handleDelete, rowIdx, setRowIdx }
         {list.length ? (
           <>
             <p>{list[rowIdx]['original']}</p>
-            <p>{list[rowIdx]['paraphrase']}</p>
+            <p>{str_word_diff(list[rowIdx]['original'], list[rowIdx]['paraphrase'])}</p>
           </>
         ) : (<p>No Annotations</p>)
         }

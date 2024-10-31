@@ -1,5 +1,4 @@
 import { useRef } from "react";
-import { COLNAMES } from "../constants";
 
 const ChangeItem = ({ rowIdx, setRowIdx, list}) => {
   const inputRef = useRef();

@@ -1,5 +1,4 @@
 import { useEffect, useRef } from "react";
-import { COLNAMES } from "../constants";
 
 // https://react.dev/learn/updating-arrays-in-state#replacing-items-in-an-array
 
@@ -16,7 +15,6 @@ const ChangeItem = ({ rowIdx, setRowIdx, list, setList}) => {
                         idx === rowIdx ? {...item, is_paraphrase: !item.is_paraphrase} : item
                     )
                 )
-                console.log(":)")
             }}>
             {
                 list.length && list[rowIdx]['is_paraphrase'] ? "VALID PARAPHRASE" : "INVALID PARAPHRASE"
@@ -24,27 +22,72 @@ const ChangeItem = ({ rowIdx, setRowIdx, list, setList}) => {
         </button>
         <button
             onClick={() => {
-                console.log(":)")
+                setList(list => 
+                    list.map((item, idx) => 
+                        idx === rowIdx ? {...item, 
+                            notes: 
+                                item.notes.includes("grammar issue") ? 
+                                item.notes.filter(note => note !== "grammar issue") :
+                                [...item.notes, "grammar issue"]} 
+                        : item
+                    )
+                )
             }}>
-            GRAMMAR ISSUE
+            {
+                list.length && list[rowIdx].notes.includes("grammar issue") ? "GRAMMAR ISSUE" : "NO GRAMMAR ISSUE"
+            }
+        </button>
+        {/* Same thing for typo, repetion, joined words */}
+        <button
+            onClick={() => {
+                setList(list => 
+                    list.map((item, idx) => 
+                        idx === rowIdx ? {...item, 
+                            notes: 
+                                item.notes.includes("typo") ? 
+                                item.notes.filter(note => note !== "typo") :
+                                [...item.notes, "typo"]} 
+                        : item
+                    )
+                )
+            }}>
+            {
+                list.length && list[rowIdx].notes.includes("typo") ? "TYPO" : "NO TYPO"
+            }
         </button>
         <button
             onClick={() => {
-                console.log(":)")
+                setList(list => 
+                    list.map((item, idx) => 
+                        idx === rowIdx ? {...item, 
+                            notes: 
+                                item.notes.includes("repetition") ? 
+                                item.notes.filter(note => note !== "repetition") :
+                                [...item.notes, "repetition"]} 
+                        : item
+                    )
+                )
             }}>
-            TYPO ISSUE
+            {
+                list.length && list[rowIdx].notes.includes("repetition") ? "REPETITION" : "NO REPETITION"
+            }
         </button>
         <button
             onClick={() => {
-                console.log(":)")
+                setList(list => 
+                    list.map((item, idx) => 
+                        idx === rowIdx ? {...item, 
+                            notes: 
+                                item.notes.includes("joined words") ? 
+                                item.notes.filter(note => note !== "joined words") :
+                                [...item.notes, "joined words"]} 
+                        : item
+                    )
+                )
             }}>
-            REPETITION ISSUE
-        </button>
-        <button
-            onClick={() => {
-                console.log(":)")
-            }}>
-            JOINED ISSUE
+            {
+                list.length && list[rowIdx].notes.includes("joined words") ? "JOINED WORDS" : "NO JOINED WORDS"
+            }
         </button>
         <br></br>
         <br></br>
