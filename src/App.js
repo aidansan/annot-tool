@@ -32,6 +32,7 @@ import Content from "./Components/Content";
 import AddList from "./Components/AddList";
 // import request from "./Components/Request";
 import { useState, useEffect } from "react";
+import { COLNAMES } from "./constants";
 
 function App() {
   const API_url = "http://127.0.0.1:5000/";
@@ -43,6 +44,9 @@ function App() {
   const [newItem, setNewItem] = useState("");
 
   const [error, setError] = useState(null);
+  
+  const [rowIdx, setRowIdx] = useState(0);
+  const [colIdx, setColIdx] = useState(0);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -54,7 +58,8 @@ function App() {
         const listItem = await response.json();
         console.log(listItem);
 
-        setList(listItem);
+        setList(listItem['data']);
+        console.log(list)
 
         setError(null);
       } catch (error) {}
@@ -172,17 +177,21 @@ function App() {
   return (
     <div className="App">
 
-      <AddList
+      {/* <AddList
         newItem={newItem}
         setNewItem={setNewItem}
         handleSubmit={handleSubmit}
-      />
+      /> */}
 
       <Content
         list={list}
         handleCheck={handleCheck}
         handleDelete={handleDelete}
-      />
+        rowIdx={rowIdx}
+        setRowIdx={setRowIdx}
+        colIdx={colIdx}
+        setColIdx={setColIdx}
+        />
     </div>
   );
 }

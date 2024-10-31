@@ -1,0 +1,1 @@
+export const COLNAMES = ["gen_1", "gen_2", "gen_3"];
