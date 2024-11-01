@@ -1,4 +1,5 @@
 import { useEffect, useRef } from "react";
+import { NOTES } from "../utils";
 // import foundation from "../foundation.css";
 
 // https://react.dev/learn/updating-arrays-in-state#replacing-items-in-an-array
@@ -9,6 +10,8 @@ const ChangeItem = ({ rowIdx, setRowIdx, list, setList}) => {
 //   [list])
   return (
     <>
+        <div class="grid-x">
+        <div class="cell small-2">
         <button
             onClick={() => {
                 setList(list => 
@@ -17,84 +20,35 @@ const ChangeItem = ({ rowIdx, setRowIdx, list, setList}) => {
                     )
                 )
             }}
-            class="button">
+            className={"button " + (list.length && list[rowIdx]['is_paraphrase'] ? "" : "alert")}>
             {
                 list.length && list[rowIdx]['is_paraphrase'] ? "VALID PARAPHRASE" : "INVALID PARAPHRASE"
             }
         </button>
-        <button
-            onClick={() => {
-                setList(list => 
-                    list.map((item, idx) => 
-                        idx === rowIdx ? {...item, 
-                            notes: 
-                                item.notes.includes("grammar issue") ? 
-                                item.notes.filter(note => note !== "grammar issue") :
-                                [...item.notes, "grammar issue"]} 
-                        : item
+        </div>
+        { NOTES.map(note => (
+            <div class="cell small-2">
+            <button
+                onClick={() => {
+                    setList(list => 
+                        list.map((item, idx) => 
+                            idx === rowIdx ? {...item, 
+                                notes: 
+                                    item.notes.includes(note) ? 
+                                    item.notes.filter(note => note !== note) :
+                                    [...item.notes, note]} 
+                            : item
+                        )
                     )
-                )
-            }}
-            class="button">
-            {
-                list.length && list[rowIdx].notes.includes("grammar issue") ? "GRAMMAR ISSUE" : "NO GRAMMAR ISSUE"
-            }
-        </button>
-        {/* Same thing for typo, repetion, joined words */}
-        <button
-            onClick={() => {
-                setList(list => 
-                    list.map((item, idx) => 
-                        idx === rowIdx ? {...item, 
-                            notes: 
-                                item.notes.includes("typo") ? 
-                                item.notes.filter(note => note !== "typo") :
-                                [...item.notes, "typo"]} 
-                        : item
-                    )
-                )
-            }}            
-            class="button">
-            {
-                list.length && list[rowIdx].notes.includes("typo") ? "TYPO" : "NO TYPO"
-            }
-        </button>
-        <button
-            onClick={() => {
-                setList(list => 
-                    list.map((item, idx) => 
-                        idx === rowIdx ? {...item, 
-                            notes: 
-                                item.notes.includes("repetition") ? 
-                                item.notes.filter(note => note !== "repetition") :
-                                [...item.notes, "repetition"]} 
-                        : item
-                    )
-                )
-            }}            
-            class="button">
-            {
-                list.length && list[rowIdx].notes.includes("repetition") ? "REPETITION" : "NO REPETITION"
-            }
-        </button>
-        <button
-            onClick={() => {
-                setList(list => 
-                    list.map((item, idx) => 
-                        idx === rowIdx ? {...item, 
-                            notes: 
-                                item.notes.includes("joined words") ? 
-                                item.notes.filter(note => note !== "joined words") :
-                                [...item.notes, "joined words"]} 
-                        : item
-                    )
-                )
-            }}
-            class="button">
-            {
-                list.length && list[rowIdx].notes.includes("joined words") ? "JOINED WORDS" : "NO JOINED WORDS"
-            }
-        </button>
+                }}
+                className={"button " + (list.length && list[rowIdx].notes.includes(note) ? "alert" : "")}>
+                {
+                    list.length && list[rowIdx].notes.includes(note) ? note.toUpperCase() : "NO " + note.toUpperCase()
+                }
+            </button>
+            </div>
+        )) }
+        </div>
         <br></br>
         <br></br>
         <br></br>

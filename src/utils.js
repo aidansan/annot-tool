@@ -2,6 +2,8 @@ import React from "react";
 
 export const COLNAMES = ["gen_1", "gen_2", "gen_3"];
 
+export const NOTES = ["grammar issue", "typo", "repetition", "joined words"];
+
 export const str_word_diff = (orig_str, new_str) => {
     const re = /\s+/;
     const orig_words = orig_str.split(re);
