@@ -33,6 +33,7 @@ import AddList from "./Components/AddList";
 // import request from "./Components/Request";
 import { useState, useEffect } from "react";
 import { COLNAMES } from "./utils";
+import "./foundation.css";
 
 function App() {
   const API_url = "http://127.0.0.1:5000/";

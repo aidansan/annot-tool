@@ -1,4 +1,5 @@
 import { useEffect, useRef } from "react";
+// import foundation from "../foundation.css";
 
 // https://react.dev/learn/updating-arrays-in-state#replacing-items-in-an-array
 
@@ -15,7 +16,8 @@ const ChangeItem = ({ rowIdx, setRowIdx, list, setList}) => {
                         idx === rowIdx ? {...item, is_paraphrase: !item.is_paraphrase} : item
                     )
                 )
-            }}>
+            }}
+            class="button">
             {
                 list.length && list[rowIdx]['is_paraphrase'] ? "VALID PARAPHRASE" : "INVALID PARAPHRASE"
             }
@@ -32,7 +34,8 @@ const ChangeItem = ({ rowIdx, setRowIdx, list, setList}) => {
                         : item
                     )
                 )
-            }}>
+            }}
+            class="button">
             {
                 list.length && list[rowIdx].notes.includes("grammar issue") ? "GRAMMAR ISSUE" : "NO GRAMMAR ISSUE"
             }
@@ -50,7 +53,8 @@ const ChangeItem = ({ rowIdx, setRowIdx, list, setList}) => {
                         : item
                     )
                 )
-            }}>
+            }}            
+            class="button">
             {
                 list.length && list[rowIdx].notes.includes("typo") ? "TYPO" : "NO TYPO"
             }
@@ -67,7 +71,8 @@ const ChangeItem = ({ rowIdx, setRowIdx, list, setList}) => {
                         : item
                     )
                 )
-            }}>
+            }}            
+            class="button">
             {
                 list.length && list[rowIdx].notes.includes("repetition") ? "REPETITION" : "NO REPETITION"
             }
@@ -84,7 +89,8 @@ const ChangeItem = ({ rowIdx, setRowIdx, list, setList}) => {
                         : item
                     )
                 )
-            }}>
+            }}
+            class="button">
             {
                 list.length && list[rowIdx].notes.includes("joined words") ? "JOINED WORDS" : "NO JOINED WORDS"
             }
