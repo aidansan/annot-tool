@@ -10,7 +10,7 @@ const ChangeItem = ({ rowIdx, setRowIdx, list, setList}) => {
 //   [list])
   return (
     <>
-        <div class="grid-x">
+        <div class="grid-x grid-padding-x">
         <div class="cell small-2">
         <button
             onClick={() => {
@@ -35,13 +35,13 @@ const ChangeItem = ({ rowIdx, setRowIdx, list, setList}) => {
                             idx === rowIdx ? {...item, 
                                 notes: 
                                     item.notes.includes(note) ? 
-                                    item.notes.filter(note => note !== note) :
+                                    item.notes.filter(n => n !== note) :
                                     [...item.notes, note]} 
                             : item
                         )
                     )
                 }}
-                className={"button " + (list.length && list[rowIdx].notes.includes(note) ? "alert" : "")}>
+                className={"button expanded " + (list.length && list[rowIdx].notes.includes(note) ? "alert" : "")}>
                 {
                     list.length && list[rowIdx].notes.includes(note) ? note.toUpperCase() : "NO " + note.toUpperCase()
                 }
