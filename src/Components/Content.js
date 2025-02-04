@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import ChangeItem from "./ChangeItem";
 import AnnotationBar from "./AnnotationBar";
-import { str_word_diff, COLNAMES } from "../utils";
+import { str_word_diff } from "../utils";
 // import '../foundation.css';
 
 
@@ -18,11 +18,11 @@ const Content = ({ list, setList, handleCheck, handleDelete, rowIdx, setRowIdx }
     return (
       <div class="grid-container">
       <main className="content">
-        <h1>{Math.floor(rowIdx / COLNAMES.length) + 1} </h1>
+        <h1>{Math.floor(rowIdx) + 1} </h1>
         {list.length ? (
           <>
-            <h3>{list[rowIdx]['original']}</h3>
-            <h3>{str_word_diff(list[rowIdx]['original'], list[rowIdx]['paraphrase'])}</h3>
+            <h3>{list[rowIdx]['orig_text']}</h3>
+            <h3>{str_word_diff(list[rowIdx]['orig_text'], list[rowIdx]['new_text'])}</h3>
           </>
         ) : (<p>No Annotations</p>)
         }

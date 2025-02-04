@@ -16,13 +16,13 @@ const ChangeItem = ({ rowIdx, setRowIdx, list, setList}) => {
             onClick={() => {
                 setList(list => 
                     list.map((item, idx) => 
-                        idx === rowIdx ? {...item, is_paraphrase: !item.is_paraphrase} : item
+                        idx === rowIdx ? {...item, valid: !item.valid} : item
                     )
                 )
             }}
-            className={"button " + (list.length && list[rowIdx]['is_paraphrase'] ? "" : "alert")}>
+            className={"button " + (list.length && 'valid' in list[rowIdx] && !list[rowIdx]['valid'] ? "alert" : "")}>
             {
-                list.length && list[rowIdx]['is_paraphrase'] ? "VALID PARAPHRASE" : "INVALID PARAPHRASE"
+                list.length && 'valid' in list[rowIdx] && !list[rowIdx]['valid'] ? "INVALID" : "VALID"
             }
         </button>
         </div>

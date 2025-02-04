@@ -2,16 +2,22 @@ from flask import Flask
 from flask_cors import CORS
 from flask import request
 import tsv_reading
+import jsonl_reading
 
 app = Flask(__name__)
 CORS(app)
+FILENAME = "/Users/aidansan/Documents/fa24/attack/name-swap-data/name_swap_data.jsonl"
 
 @app.route("/get-data")
 def get_data():
-    return {"data": tsv_reading.read_tsv()}
+    data = jsonl_reading.read_jsonl(FILENAME)
+    # print(data)
+    return {"data": data}
 
 @app.route("/set-data", methods=["POST"])
 def set_data():
     data = request.json
-    print(data)
-    return "<p>Hello, World!</p>"
+    # print(data)
+    if data:
+        jsonl_reading.write_jsonl(data, FILENAME)
+    return "ok"
