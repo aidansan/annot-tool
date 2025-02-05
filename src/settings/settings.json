@@ -3,7 +3,7 @@
     {
         "name": "changes_meaning",
         "text": "Changes Meaning?",
-        "options": ["Yes", "Slightly", "No"]
+        "options": ["No", "Slightly", "Yes"]
     },
     {
         "name": "grammaticality",
@@ -14,6 +14,11 @@
         "name": "logical",
         "text": "Logical?",
         "options": ["Yes", "Mostly", "No"]
+    },
+    {
+        "name": "parsing",
+        "text": "Parsing",
+        "options": ["Correct", "Incorrect"]
     }
 ]
 }
