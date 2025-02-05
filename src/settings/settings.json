@@ -1,0 +1,19 @@
+{
+    "annotation_fields": [
+    {
+        "name": "changes_meaning",
+        "text": "Changes Meaning?",
+        "options": ["Yes", "Slightly", "No"]
+    },
+    {
+        "name": "grammaticality",
+        "text": "Grammatical?",
+        "options": ["Yes", "Mostly", "No"]
+    },
+    {
+        "name": "logical",
+        "text": "Logical?",
+        "options": ["Yes", "Mostly", "No"]
+    }
+]
+}

@@ -28,9 +28,10 @@ def create_annotation_file(input_fname, setting):
     output_data = []
     for row in input_data:
         row = copy.deepcopy(row)
-        row['annotation'] = [
-            field for field in setting['annotation_fields']
-        ]
+        row['annotation'] = {
+            field["name"]: "" 
+            for field in setting['annotation_fields']
+        }
         output_data.append(row)
     output_fname = get_annotation_fname(input_fname)
     with open(output_fname, 'w') as outfile:

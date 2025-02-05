@@ -25,12 +25,17 @@ const ChangeItem = ({ rowIdx, setRowIdx, list, setList}) => {
             onClick={() => {
                 setList(list => 
                     list.map((item, idx) => 
-                        idx === rowIdx ? {...item, 
-                            [field]: !item[field]} : item
+                        idx === rowIdx ? {
+                            ...item,
+                            annotation: {
+                                ...item.annotation,
+                                [field.name]: option
+                            }
+                        } : item
                     )
                 )
             }}
-            className={"button expanded" + (list.length && [].includes('X') ? "alert" : "")}>
+            className={"button expanded " + ( (list.length && list[rowIdx].annotation[field.name] === option) ? "" : "secondary")}>
             {
                 option
             }

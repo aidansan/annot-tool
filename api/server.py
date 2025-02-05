@@ -18,8 +18,7 @@ def get_data():
     if not os.path.exists(ann_fname):
         utils.create_annotation_file(utils.INPUT_FILENAME, SETTING)
     data = jsonl_reading.read_jsonl(ann_fname)
-    # print(data)
-    print(data[:10])
+    # print(data[:10])
     return {"data": data}
 
 # @app.route("/get-setting")
@@ -31,6 +30,6 @@ def set_data():
     data = request.json
     # print(data)
     if data:
-        ann_fname = utils.get_annotation_fname(utils.INPUT_FILENAME, SETTING)
+        ann_fname = utils.get_annotation_fname(utils.INPUT_FILENAME)
         jsonl_reading.write_jsonl(data, ann_fname)
     return "ok"
